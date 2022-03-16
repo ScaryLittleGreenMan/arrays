@@ -67,17 +67,55 @@ public class Main {
         System.out.printf("Слово: %s, Число с плаваущей зпт: %f, Целое число: %d, Символ: %c", "Java", 2.5f, 20, 's');
         System.out.println();
         //сравнение строк
-        String str1= "A";
-        String str2= "A";
-        String str3= "B";
+        String str1 = "A";
+        String str2 = "A";
+        String str3 = "B";
         System.out.println(str1.equals(str2));
         System.out.println(str2.equals(str3));
+
+        //practice
+        System.out.println("Practice");
+
+        int[] arrayToFill = new int[100];
+        fillArray(arrayToFill);
+
+        int[] arrayToInvert = {1, 1, 0, 0, 1, 1};
+        invertArray(arrayToInvert);
+
+        int[] arrayToInvertX6 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        invertArrayX6(arrayToInvertX6);
+
+        int[][] arrayForDiagonal = new int[10][10];
+        for (int i = 0; i < arrayForDiagonal.length; i++) {
+            for (int j = 0; j < arrayForDiagonal.length; j++) {
+                if (i == j || i + 1 == arrayForDiagonal.length - j) {
+                    arrayForDiagonal[i][j] = 1;
+                }
+            }
+        }
+        printArray(arrayForDiagonal);
+
+        makeCustomArray(11, 5);
+
+        int[] randomArray = makeRandomArray(6, 45);
+        int max = 0;
+        int min = randomArray[0];
+        System.out.println(min);
+        for (int i = 0; i < randomArray.length; i++) {
+            if (randomArray[i] > max) {
+                max = randomArray[i];
+            }
+            if (randomArray[i] < min) {
+                min = randomArray[i];
+            }
+        }
+        System.out.println("Min- " + min + " Max- " + max);
     }
 
     public static void printArray(int[][] arr) {
         for (int i = 0; i < arr.length; i++) { //считает количество строк
             for (int j = 0; j < arr[i].length; j++) { //считает количество столбцов
-                System.out.print(arr[i][j]);
+                System.out.print(arr[i][j] + " ");
             }
             System.out.println();
         }
@@ -121,6 +159,54 @@ public class Main {
             sum += arr[i];
         }
         return sum;
+    }
+
+    //practice
+    public static void fillArray(int[] arr) {
+        System.out.println(Arrays.toString(arr));
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void invertArray(int[] arr) {
+        System.out.println(Arrays.toString(arr));
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 0) {
+                arr[i] = 1;
+            } else arr[i] = 0;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void invertArrayX6(int[] arr) {
+        System.out.println(Arrays.toString(arr));
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < 6) {
+                arr[i] *= 6;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static int[] makeCustomArray(int len, int initialValue) {
+        int[] arr = new int[len];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = initialValue;
+        }
+        System.out.println(Arrays.toString(arr));
+        return arr;
+    }
+
+    public static int[] makeRandomArray(int length, int randomDiapason) {
+        int[] arr = new int[length];
+        Random random = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(randomDiapason);
+        }
+        System.out.println(Arrays.toString(arr));
+        return arr;
     }
 
 
